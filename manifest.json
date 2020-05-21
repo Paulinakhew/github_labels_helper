@@ -1,24 +1,28 @@
 {
-    "name": "Github Label Migrator",
-    "version": "1.0",
-    "description": "Takes issue labels from one github repo and migrates it to another",
-    "permissions": ["activeTab", "declarativeContent", "storage"],
-    "background": {
-        "scripts": ["background.js"],
-        "persistent": false
-    },
-    "page_action": {
-        "default_popup": "popup.html",
-        "default_icon": {
-            "16": "images/favicon-16x16.png",
-            "32": "images/favicon-32x32.png",
-            "128": "images/favicon-128x128.png"
-        }
-    },
-    "icons": {
-        "16": "images/favicon-16x16.png",
-        "32": "images/favicon-32x32.png",
-        "128": "images/favicon-128x128.png"
-    },
-    "manifest_version": 2
+  "name": "Github Label Migrator",
+  "version": "1.0",
+  "description": "Takes issue labels from one github repo and migrates it to another",
+  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "options_ui": {
+    "page": "options.html",
+    "open_in_tab": false
+  },
+  "page_action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "images/favicon-16x16.png",
+      "32": "images/favicon-32x32.png",
+      "128": "images/favicon-128x128.png"
+    }
+  },
+  "icons": {
+    "16": "images/favicon-16x16.png",
+    "32": "images/favicon-32x32.png",
+    "128": "images/favicon-128x128.png"
+  },
+  "manifest_version": 2
 }
