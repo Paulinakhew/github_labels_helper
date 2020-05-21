@@ -1,11 +1,15 @@
 chrome.runtime.onInstalled.addListener(function() {
   chrome.storage.sync.set({color: '#3aa757'}, function() {
-    console.log("What's up.");
+    console.log('This is green.');
   });
   chrome.declarativeContent.onPageChanged.removeRules(undefined, function() {
     chrome.declarativeContent.onPageChanged.addRules([{
       conditions: [new chrome.declarativeContent.PageStateMatcher({
-        pageUrl: {hostEquals: 'developer.chrome.com'},
+        pageUrl: {
+          hostEquals: 'github.com',
+          pathSuffix: '/labels',
+          schemes: ['https']
+        },
       })
       ],
         actions: [new chrome.declarativeContent.ShowPageAction()]
