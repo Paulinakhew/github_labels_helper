@@ -1,14 +1,19 @@
 var length = document.getElementsByClassName("js-edit-label").length;
 for (i = 0; i < length; i++) {
-    var edit = document.getElementsByClassName("js-edit-label")[i];
-    edit.click();
+    document.getElementsByClassName("js-edit-label")[i].click();
 }
 
-var elems = document.querySelectorAll("[id^='label-name']");
 let label_names = []
+let label_descriptions = []
+let label_colours = []
 
 for (i = 1; i <= length; i++) {
-    label_names.push(elems[i].value);
+    label_names.push(document.querySelectorAll("[id^='label-name']")[i].value);
+    label_descriptions.push(document.querySelectorAll("[id^='label-description']")[i].value);
+    label_colours.push(document.querySelectorAll("[id^='label-color']")[i].value);
+    document.getElementsByClassName("js-edit-label-cancel")[i].click();
 }
 
-console.log(label_names);
+console.log(label_names)
+console.log(label_descriptions)
+console.log(label_colours)
