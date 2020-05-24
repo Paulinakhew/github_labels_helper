@@ -17,12 +17,15 @@ changeColor.onclick = function() {
 let addLabels = document.getElementById('addLabels');
 
 chrome.storage.sync.get('names', function(data) {
-  console.log(data.key);
+  console.log("data names");
+  console.log(data.names);
 });
 
-addLabels.onclick = function() {
+addLabels.onclick = function(element) {
+  console.log(element);
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.executeScript(
-      tabs[0].id);
+      tabs[0].id),
+      {code: 'document.body.style.backgroundColor = '}
   });
 }
