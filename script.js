@@ -19,7 +19,7 @@ chrome.storage.sync.set(
     'names': label_names,
     'descriptions': label_descriptions,
     'colours': label_colours
-  }, function(){
+  }, function() {
     console.log(label_names);
     console.log(label_descriptions);
     console.log(label_colours);
