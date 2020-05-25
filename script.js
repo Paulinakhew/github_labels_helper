@@ -14,16 +14,14 @@ for (i = 1; i <= length; i++) {
   document.getElementsByClassName("js-edit-label-cancel")[i].click();
 }
 
-console.log(label_names)
-console.log(label_descriptions)
-console.log(label_colours)
-
 chrome.storage.sync.set(
   {
     'names': label_names,
     'descriptions': label_descriptions,
     'colours': label_colours
   }, function(){
-    console.log('saved');
+    console.log(label_names);
+    console.log(label_descriptions);
+    console.log(label_colours);
   }
 )
