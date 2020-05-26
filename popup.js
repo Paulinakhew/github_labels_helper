@@ -21,11 +21,10 @@ chrome.storage.sync.get('names', function(data) {
   console.log(data.names);
 });
 
-addLabels.onclick = function(element) {
-  console.log(element);
+addLabels.onclick = function() {
   chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
     chrome.tabs.executeScript(
-      tabs[0].id),
-      {code: 'document.body.style.backgroundColor = '}
+      tabs[0].id,
+      {code: 'document.body.style.backgroundColor = "#d399e7";'});
   });
 }
