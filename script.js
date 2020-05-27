@@ -1,13 +1,14 @@
-var length = document.getElementsByClassName("js-edit-label").length;
-for (i = 0; i < length; i++) {
-    document.getElementsByClassName("js-edit-label")[i].click();
+const labels = document.getElementsByClassName("js-edit-label");
+
+for (i = 0; i < labels.length; i++) {
+  labels[i].click();
 }
 
 let label_names = []
 let label_descriptions = []
 let label_colours = []
 
-for (i = 1; i <= length; i++) {
+for (i = 1; i <= labels.length; i++) {
   label_names.push(document.querySelectorAll("[id^='label-name']")[i].value);
   label_descriptions.push(document.querySelectorAll("[id^='label-description']")[i].value);
   label_colours.push(document.querySelectorAll("[id^='label-color']")[i].value);
