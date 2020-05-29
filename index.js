@@ -55,19 +55,14 @@ function setInfo() {
       var tag_length = result.tagCount;
       var names = result.names;
       var descriptions = result.descriptions;
-      var colours = result.colours;
+      // var colours = result.colours;
       for (i = 0; i < tag_length; i++) {
-        document.getElementsByClassName("js-details-target-new-label")[0].click();
+        // TODO: add sleep here
+        setTimeout(function(){ document.getElementsByClassName("js-details-target-new-label")[0].click(); }, 1000);
         document.getElementById("label-name-").value = names[i];
         document.getElementById("label-description-").value = descriptions[i];
-        document.getElementById("label-color-").value = colours[i];
+        // document.getElementById("label-color-").value = colours[i];
         document.getElementsByClassName("js-new-label-color rounded-1")[0].click();
-        // need to click enter on label color field here
-        // event = new KeyboardEvent("enter", {
-        //   key:'Enter',
-        //   code:'Enter'
-        // });
-        // document.getElementById("label-color-").dispatchEvent(event);
         setTimeout(function(){ document.getElementsByClassName("btn btn-primary")[2].click(); }, 1000);
       }
     } else {
