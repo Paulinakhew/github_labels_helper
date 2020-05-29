@@ -28,6 +28,15 @@ function getInfo() {
   )
 }
 
+function setInfo() {
+  var length = document.getElementsByClassName("ml-3").length;
+  for (i = length; i > 0; i--) {
+    if (i % 2 == 1) {
+      document.getElementsByClassName("ml-3")[i].click();
+    }
+  }
+}
+
 var body = document.getElementsByClassName("subnav")[0];
 
 let saveButton = document.createElement("button");
@@ -40,3 +49,4 @@ let fillButton = document.createElement("button");
 fillButton.innerHTML = "Fill";
 fillButton.className = "btn";
 body.appendChild(fillButton);
+fillButton.addEventListener("click", setInfo);
