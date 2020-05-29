@@ -28,14 +28,15 @@ function getInfo() {
   )
 }
 
-console.log("This is from index.js");
+var body = document.getElementsByClassName("subnav")[0];
 
 let saveButton = document.createElement("button");
 saveButton.innerHTML = "Save";
-
-var body = document.getElementsByClassName("subnav")[0];
+saveButton.className = "btn";
 body.appendChild(saveButton);
-
 saveButton.addEventListener("click", getInfo);
 
-console.log("made button");
+let fillButton = document.createElement("button");
+fillButton.innerHTML = "Fill";
+fillButton.className = "btn";
+body.appendChild(fillButton);
