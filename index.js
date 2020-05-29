@@ -27,3 +27,9 @@ function getInfo() {
     }
   )
 }
+
+console.log("This is from index.js");
+
+let saveButton = document.createElement("button");
+saveButton.innerHTML = "Save";
+saveButton.addEventListener("click", getInfo);
