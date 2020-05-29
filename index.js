@@ -19,22 +19,40 @@ function getInfo() {
     {
       'names': label_names,
       'descriptions': label_descriptions,
-      'colours': label_colours
+      'colours': label_colours,
+      'tagCount': length
     }, function() {
       console.log(label_names);
       console.log(label_descriptions);
       console.log(label_colours);
+      console.log(length);
     }
   )
 }
 
 function setInfo() {
+
   var length = document.getElementsByClassName("ml-3").length;
   for (i = length; i > 0; i--) {
     if (i % 2 == 1) {
       document.getElementsByClassName("ml-3")[i].click();
     }
   }
+  
+  chrome.storage.sync.get(['tagCount', 'names', 'descriptions', 'colours'], function(result) {
+    var tag_length = result.tagCount;
+    var names = result.names;
+    var descriptions = result.descriptions;
+    var colours = result.colours;
+    for (i = 0; i < tag_length; i++) {
+      document.getElementsByClassName("js-details-target-new-label")[0].click();
+      document.getElementById("label-name-").value = names[i];
+      document.getElementById("label-description-").value = descriptions[i];
+      document.getElementById("label-color-").value = colours[i];
+      // need to click enter on label color field here
+      document.getElementsByClassName("btn btn-primary")[2].click();
+    }
+  });
 }
 
 var body = document.getElementsByClassName("subnav")[0];
