@@ -32,4 +32,10 @@ console.log("This is from index.js");
 
 let saveButton = document.createElement("button");
 saveButton.innerHTML = "Save";
+
+var body = document.getElementsByClassName("subnav")[0];
+body.appendChild(saveButton);
+
 saveButton.addEventListener("click", getInfo);
+
+console.log("made button");
