@@ -39,7 +39,6 @@ function getInfo() {
 
 function setInfo() {
   var length = document.getElementsByClassName("ml-3").length;
-  console.log(length);
   if (length > 0) {
     for (i = length; i > 0; i--) {
       if (i % 2 == 1) {
@@ -95,12 +94,11 @@ function createFillButton() {
 chrome.storage.onChanged.addListener(function(changes, namespace) {
   for (var key in changes) {
     var storageChange = changes[key];
-    console.log('Storage key "%s" in namespace "%s" changes. ' + 'Old value was "%s", new value "%s".',
+    console.log('Storage key "%s" in namespace "%s" changed. ' + 'Old value was "%s", new value "%s".',
       key,
       namespace,
       storageChange.oldValue,
       storageChange.newValue
     )
   }
-
 });
