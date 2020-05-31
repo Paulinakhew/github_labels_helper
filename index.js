@@ -1,4 +1,5 @@
 let fillButtonExists = false;
+var body = document.getElementsByClassName("subnav")[0];
 
 function getInfo() {
   var length = document.getElementsByClassName("js-edit-label").length;
@@ -38,18 +39,6 @@ function getInfo() {
 }
 
 function setInfo() {
-  var length = document.getElementsByClassName("ml-3").length;
-  if (length > 0) {
-    console.log("Deleting tags");
-    for (i = length; i > 0; i--) {
-      if (i % 2 == 1) {
-        document.getElementsByClassName("ml-3")[i].click();
-      }
-    }
-  } else {
-    console.log("No tags to delete");
-  }
-  sleep(1000);
   chrome.storage.sync.get(['tagCount', 'names', 'descriptions', 'colours'], function(result) {
     if (result) {
       console.log("Creating tags");
@@ -58,7 +47,6 @@ function setInfo() {
       var descriptions = result.descriptions;
       // var colours = result.colours;
       for (i = 0; i < tag_length; i++) {
-        sleep(2000);
         document.getElementsByClassName("js-details-target-new-label")[0].click();
         document.getElementById("label-name-").value = names[i];
         document.getElementById("label-description-").value = descriptions[i];
@@ -80,14 +68,31 @@ function sleep(milliseconds) {
   } while (currentDate - date < milliseconds);
 }
 
-
-var body = document.getElementsByClassName("subnav")[0];
+function deleteLabels() {
+  var length = document.getElementsByClassName("ml-3").length;
+  if (length > 0) {
+    console.log("Deleting tags");
+    for (i = length; i > 0; i--) {
+      if (i % 2 == 1) {
+        document.getElementsByClassName("ml-3")[i].click();
+      }
+    }
+  } else {
+    console.log("No tags to delete");
+  }
+}
 
 let saveButton = document.createElement("button");
 saveButton.innerHTML = "Save";
 saveButton.className = "btn";
 body.appendChild(saveButton);
 saveButton.addEventListener("click", getInfo);
+
+let deleteButton = document.createElement("button");
+deleteButton.innerHTML = "Delete Labels";
+deleteButton.className = "btn";
+body.appendChild(deleteButton);
+deleteButton.addEventListener("click", deleteLabels);
 
 function createFillButton() {
   fillButtonExists = true;
