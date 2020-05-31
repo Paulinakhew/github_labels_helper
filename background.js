@@ -13,3 +13,7 @@ chrome.runtime.onInstalled.addListener(function() {
     }]);
   });
 });
+
+chrome.runtime.onPageChanged.addListener(function() {
+  console.log("asdf");
+})

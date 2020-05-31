@@ -2,7 +2,7 @@
   "name": "Github Label Migrator",
   "version": "1.0",
   "description": "Takes issue labels from one github repo and migrates it to another",
-  "permissions": ["declarativeContent", "storage"],
+  "permissions": ["declarativeContent", "storage", "tabs"],
   "background": {
     "scripts": ["background.js"]
   },
@@ -17,7 +17,8 @@
   "content_scripts": [
     {
       "matches": ["https://github.com/*/labels"],
-      "js": ["index.js"]
+      "js": ["index.js"],
+      "all_frames": true
     }
   ],
   "icons": {

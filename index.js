@@ -98,6 +98,8 @@ function createFillButton() {
       fillButton.className = "btn";
       body.appendChild(fillButton);
       fillButton.addEventListener("click", setInfo);
+    } else {
+      console.log("Nothing to fill");
     }
   });
 }
