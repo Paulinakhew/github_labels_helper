@@ -40,35 +40,46 @@ function getInfo() {
 function setInfo() {
   var length = document.getElementsByClassName("ml-3").length;
   if (length > 0) {
+    console.log("Deleting tags");
     for (i = length; i > 0; i--) {
       if (i % 2 == 1) {
         document.getElementsByClassName("ml-3")[i].click();
       }
     }
   } else {
-    console.log("Nothing in storage");
+    console.log("No tags to delete");
   }
-
+  sleep(1000);
   chrome.storage.sync.get(['tagCount', 'names', 'descriptions', 'colours'], function(result) {
     if (result) {
+      console.log("Creating tags");
       var tag_length = result.tagCount;
       var names = result.names;
       var descriptions = result.descriptions;
       // var colours = result.colours;
       for (i = 0; i < tag_length; i++) {
-        // TODO: add sleep here
-        setTimeout(function(){ document.getElementsByClassName("js-details-target-new-label")[0].click(); }, 1000);
+        sleep(2000);
+        document.getElementsByClassName("js-details-target-new-label")[0].click();
         document.getElementById("label-name-").value = names[i];
         document.getElementById("label-description-").value = descriptions[i];
         // document.getElementById("label-color-").value = colours[i];
         document.getElementsByClassName("js-new-label-color rounded-1")[0].click();
-        setTimeout(function(){ document.getElementsByClassName("btn btn-primary")[2].click(); }, 1000);
+        document.getElementsByClassName("btn btn-primary")[2].click();
       }
     } else {
       console.log("Nothing in storage");
     }
   });
 }
+
+function sleep(milliseconds) {
+  const date = Date.now();
+  let currentDate = null;
+  do {
+    currentDate = Date.now();
+  } while (currentDate - date < milliseconds);
+}
+
 
 var body = document.getElementsByClassName("subnav")[0];
 
@@ -100,5 +111,8 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       storageChange.oldValue,
       storageChange.newValue
     )
+  }
+  if (!fillButtonExists) {
+    createFillButton();
   }
 });
