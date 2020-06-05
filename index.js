@@ -34,6 +34,8 @@ function getInfo() {
     if (!fillButtonExists) {
       createFillButton();
     }
+  } else {
+    console.log("No tags exist");
   }
 }
 
@@ -46,7 +48,7 @@ function setInfo() {
       var descriptions = result.descriptions;
       // var colours = result.colours;
       for (i = 0; i < tag_length; i++) {
-        document.getElementsByClassName("js-details-target-new-label")[0].click();
+        document.getElementsByClassName("btn btn-primary js-details-target js-details-target-new-label")[0].click();
         document.getElementById("label-name-").value = names[i];
         document.getElementById("label-description-").value = descriptions[i];
         // document.getElementById("label-color-").value = colours[i];
