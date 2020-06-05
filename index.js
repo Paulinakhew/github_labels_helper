@@ -53,7 +53,8 @@ function setInfo() {
         document.getElementById("label-description-").value = descriptions[i];
         // document.getElementById("label-color-").value = colours[i];
         document.getElementsByClassName("js-new-label-color rounded-1")[0].click();
-        document.getElementsByClassName("btn btn-primary")[2].click();
+        // document.getElementsByClassName("btn btn-primary")[2].click();
+        setTimeout(function(){ document.getElementsByClassName("btn btn-primary")[2].click(); }, 1000);
       }
     } else {
       console.log("Nothing in storage");
@@ -85,13 +86,13 @@ function deleteLabels() {
 
 let saveButton = document.createElement("button");
 saveButton.innerHTML = "Save";
-// saveButton.className = "btn";
+saveButton.className = "btn";
 body.appendChild(saveButton);
 saveButton.addEventListener("click", getInfo);
 
 let deleteButton = document.createElement("button");
 deleteButton.innerHTML = "Delete Labels";
-// deleteButton.className = "btn";
+deleteButton.className = "btn";
 body.appendChild(deleteButton);
 deleteButton.addEventListener("click", deleteLabels);
 
@@ -101,7 +102,7 @@ function createFillButton() {
     if (result && result.tagCount && result.tagCount > 0) {
       let fillButton = document.createElement("button");
       fillButton.innerHTML = "Fill";
-      // fillButton.className = "btn";
+      fillButton.className = "btn";
       body.appendChild(fillButton);
       fillButton.addEventListener("click", setInfo);
     } else {
