@@ -3,9 +3,6 @@
   "version": "1.0",
   "description": "Takes issue labels from one github repo and migrates it to another",
   "permissions": ["declarativeContent", "storage", "tabs"],
-  "background": {
-    "scripts": ["background.js"]
-  },
   "page_action": {
     "default_icon": {
       "16": "images/favicon-16x16.png",
