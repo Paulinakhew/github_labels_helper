@@ -1,4 +1,3 @@
-let fillButtonExists = false;
 var body = document.getElementsByClassName("subnav")[0];
 
 function getInfo() {
@@ -17,23 +16,15 @@ function getInfo() {
       label_colours.push(document.querySelectorAll("[id^='label-color']")[i].value);
       document.getElementsByClassName("js-edit-label-cancel")[i].click();
     }
-  
+
     chrome.storage.sync.set(
       {
         'names': label_names,
         'descriptions': label_descriptions,
         'colours': label_colours,
         'tagCount': length
-      }, function() {
-        console.log(label_names);
-        console.log(label_descriptions);
-        console.log(label_colours);
-        console.log(length + " tags found");
-      }
+      }, function() {}
     )
-    if (!fillButtonExists) {
-      createFillButton();
-    }
   } else {
     console.log("No tags exist");
   }
@@ -96,8 +87,9 @@ deleteButton.className = "btn";
 body.appendChild(deleteButton);
 deleteButton.addEventListener("click", deleteLabels);
 
+createFillButton();
+
 function createFillButton() {
-  fillButtonExists = true;
   chrome.storage.sync.get(['tagCount'], function(result) {
     if (result && result.tagCount && result.tagCount > 0) {
       let fillButton = document.createElement("button");
@@ -120,8 +112,5 @@ chrome.storage.onChanged.addListener(function(changes, namespace) {
       storageChange.oldValue,
       storageChange.newValue
     )
-  }
-  if (!fillButtonExists) {
-    createFillButton();
   }
 });
