@@ -45,7 +45,10 @@ function setInfo() {
         // document.getElementById("label-color-").value = colours[i];
         document.getElementsByClassName("js-new-label-color rounded-1")[0].click();
         // document.getElementsByClassName("btn btn-primary")[2].click();
-        setTimeout(function(){ document.getElementsByClassName("btn btn-primary")[2].click(); }, 1000);
+        if (document.getElementsByClassName("btn btn-primary")[2].disabled) {
+        setTimeout(function(){ document.getElementsByClassName("btn btn-primary")[2].click(); }, 100);
+        }
+        document.getElementsByClassName("btn btn-primary")[2].click();
       }
     } else {
       console.log("Nothing in storage");
