@@ -1,2 +1,2 @@
-# chrome_extension
-Chrome extension to transport project label info between GitHub repos. WIP
+# github_labels_helper
+Chrome extension to transport issue / project label info between GitHub repos. WIP
